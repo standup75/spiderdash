@@ -1,0 +1,97 @@
+<button data-theBeast="createFakePlayer, disableCanvas">add player</button>
+<div class="canvas-container" id="main">
+  <canvas id="canvas-bg" style="width:640px">
+    No support for canvas, no fun: you need to update your browser. Choose Firefox, for example: <a href="http://firefox.com">http://firefox.com</a>
+  </canvas>
+  <canvas id="canvas" style="width:640px"></canvas>
+  <canvas id="full-canvas"></canvas>
+  <canvas id="canvas-ui"></canvas>
+</div>
+<div class="field">
+  <%= label_tag :name %>
+  <div class="value"><%= @level.name %></div>
+</div>
+<div class="field">
+  <%= label_tag :level_index %>
+  <div class="value"><%= @level.level_index %></div>
+</div>
+<div class="field">
+  <%= label_tag :speed %>
+  <div class="value"><%= @level.speed %></div>
+</div>
+<div class="field">
+  <%= label_tag :tile_count_x %>
+  <div class="value"><%= @level.tile_count_x %></div>
+</div>
+<div class="field">
+  <%= label_tag :tile_count_y %>
+  <div class="value"><%= @level.tile_count_y %></div>
+</div>
+<div class="field">
+  <%= label_tag :set %>
+  <div class="value"><%= @level.set %></div>
+</div>
+<div class="field">
+  <%= label_tag :world %>
+  <div class="value">
+    <% if @level.world %>
+    <%= link_to @level.world.name, @level.world %>
+    <% else %>
+    No world associated
+    <% end %>
+  </div>
+</div>
+<% if @level.sprites %>
+<div class="field">
+  <%= label_tag :sprites %>
+  <div class="value">
+    <ul>
+      <% @level.sprites.uniq.each do |sprite| %>
+        <li><%= link_to sprite.name, sprite %></li>
+      <% end %>
+    </ul>
+  </div>
+</div>
+<% end %>
+<% if @level.bonus %>
+<div class="field">
+  <%= label_tag :bonus %>
+  <div class="value">
+    <ul>
+      <% @level.bonus.uniq.each do |bonu| %>
+        <li><%= link_to bonu.name, bonu %></li>
+      <% end %>
+    </ul>
+  </div>
+</div>
+<% end %>
+<% if @level.options %>
+<div class="field">
+  <%= label_tag :options %>
+  <div class="value">
+    <ul>
+      <% @level.options.each do |option| %>
+        <li><%= option.sprite.name %>: <%= option.label %> = <%= option.content %></li>
+      <% end %>
+    </ul>
+  </div>
+</div>
+<% end %>
+<%= link_to "delete this level >>", level_path, :method => :delete, :class => "margin-top action-link", :confirm => "Are you sure you want to delete this level?" %>
+<%= link_to "deep delete this level >>", level_path(:deep => true), :method => :delete, :class => "margin-top-small action-link", :confirm => "Are you sure you want to delete this level and all its children?" %>
+<%= link_to "edit this level >>", edit_level_path, :class => "margin-top-small action-link" %>
+<%= link_to "duplicate this level >>", duplicate_level_path, :class => "margin-top-small action-link" %>
+<%= link_to "back >>", levels_path, :class => "margin-top-small action-link" %>
+<script>
+  pubsub.publish("editorMode");
+  swGame.gameData = {
+    sizing_mode: "<%= @level.world.game.sizing_mode %>",
+    height: <%= @level.world.game.height %>,
+    width: <%= @level.world.game.width %>,
+    worlds: [{
+      name: "<%= @level.world ? @level.world.name : "" %>",
+      slug: "<%= @level.world ? @level.world.slug : "" %>",
+      checkpoints:[{level:<%= @level.to_json.html_safe %>}]
+    }]
+  }
+</script>

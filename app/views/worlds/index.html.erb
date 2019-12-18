@@ -1,0 +1,11 @@
+<% if !@worlds.empty? %>
+  <ul class="item-list">
+  <% @worlds.each do |world| %>
+    <li><%= link_to world.name, world %></li>
+  <% end %>
+  </ul>
+<% else %>
+  <div> no world available.</div>
+<% end %>
+
+<%= link_to "create a new world >>", new_world_path, :class => "create-link action-link" %>

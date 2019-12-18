@@ -1,0 +1,72 @@
+<% if @level.errors.any? %>
+<div class="error">
+  <ul>
+  <% @level.errors.full_messages.each do |msg| %>
+    <li><%= msg %></li>
+  <% end %>
+  </ul>
+</div>
+<% end %>
+<%= form_for @level, :class => "left" do |f| %>
+  <div class="field">
+    <%= f.label :name %>
+    <%= f.text_field :name %>
+    <button data-theBeast="clearLevel">Clear</button>
+  </div>
+  <div class="field">
+    <%= f.label :layout %>
+    <%= f.text_area :layout, :size => "#{@level.tile_count_x}x#{@level.tile_count_y}", :data => {:theBeast => "layout", :codeid => "tiles-codes"}, :maxLength => @level.surface, :wrap => "hard", :class => "left" %>
+    <div id="tiles-codes" class="left margin-left">
+      <ul class="codes">
+        <li>
+          <span class="left letter">W</span>
+          <div class="legend">Wall</div>
+        </li>
+        <% @level.sprites_assoc.keys.each do |key| %>
+          <li>
+            <span class="left letter"><%= key %></span>
+            <div class="legend"><%= "#{@level.sprites_assoc[key].name} (#{@level.sprites_assoc[key].family})" %></div>
+            <% if @level.sprites_assoc[key].has_attribute?(:options) and not @level.sprites_assoc[key].options.blank? %>
+            <div class="legend italic"><%= @level.sprites_assoc[key].options_as_string %></div>
+            <% end %>
+          </li>
+        <% end %>
+      </ul>
+    </div>
+  </div>
+  <div class="field">
+    <%= f.label :level_index %>
+    <%= f.text_field :level_index, :disabled => true %>
+  </div>
+  <div class="field">
+    <%= f.label :speed, "Speed (1-1000)" %>
+    <%= f.text_field :speed %>
+  </div>
+  <div class="field">
+    <%= f.label :tile_count_x %>
+    <%= f.text_field :tile_count_x, :id => "tile_count_x" %>
+  </div>
+  <div class="field">
+    <%= f.label :tile_count_y %>
+    <%= f.text_field :tile_count_y, :id => "tile_count_y" %>
+  </div>
+  <div class="field">
+    <%= f.label :set %>
+    <%= f.text_field :set, :id => "tile_count_y" %>
+  </div>
+  <div class="field">
+    <%= f.label :world %>
+    <%= f.collection_select(:world_id, World.all, :id, :name, :include_blank => 'Please select a world') %>
+  </div>
+  <div class="field options" data-theBeast="levelOptions">
+    <a class="add-option" href="#">add sprite option</a>
+    <% @level.options.where("sprite_id is not null").each_with_index do |option, i| %>
+      <%= render :partial => "level_option", :locals => { :option => option, :i => i } %>
+    <% end %>
+  </div>
+  <%= submit_tag "Save", :class => "create-submit button" %>
+<% end %>
+
+<script type="text/template" id="level-option-template">
+  <%= render :partial => "level_option", :locals => { :option => Option.new(:label => "", :content => ""), :i => "{{i}}"} %>
+</script>

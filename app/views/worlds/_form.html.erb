@@ -1,0 +1,92 @@
+<% if @world.errors.any? %>
+<div class="error">
+  <ul>
+  <% @world.errors.full_messages.each do |msg| %>
+    <li><%= msg %></li>
+  <% end %>
+  </ul>
+</div>
+<% end %>
+<div class="world-canvas container" data-theBeast="worldCanvas" data-world_id="<%= @world.id %>">
+  <div class="canvas-container left">
+    <canvas width="<%= @game_width * 2 %>" height="<%= @game_height * 2 %>" class="bgcanvas"></canvas>
+    <canvas width="<%= @game_width %>" height="<%= @game_height %>" class="canvas"></canvas>
+  </div>
+  <ul class="checkpoint-details left margin-left">
+    <li>
+      <label for="x">x</label>
+      <input type="text" name="x" />
+    </li>
+    <li>
+      <label for="y">y</label>
+      <input type="text" name="y" />
+    </li>
+    <li>
+      <label for="kind">Type</label>
+      <select name="kind">
+        <option value="<%= CHECKPOINT_LEVEL %>">Level</option>
+        <option value="<%= CHECKPOINT_WORLD_GATE %>">World Gate</option>
+        <option value="<%= CHECKPOINT_BONUS_LEVEL %>">Bonus Level</option>
+        <option value="<%= CHECKPOINT_GAME_START_POS %>">Game Start location</option>
+        <option value="<%= CHECKPOINT_WORLD_BEGIN %>">World Start Location</option>
+        <option value="<%= CHECKPOINT_WORLD_END %>">World End Location</option>
+      </select>
+    </li>
+    <% if !@levels.blank? %>
+    <li>
+      <label for="level">Level</label>
+      <%= collection_select(:checkpoint, :level_id, @levels, :id, :long_name, :include_blank => 'Please select a level') %>
+    </li>
+    <% end %>
+    <li>
+      <label for="world">Gate to...</label>
+      <%= collection_select(:checkpoint, :link_to_world_id, World.all, :id, :name, :include_blank => 'Please select a world') %>
+    </li>
+    <li>
+      <button class="update_checkpoint prev">&lt;&lt; &amp; Update</button>
+      <button class="update_checkpoint">Update</button>
+      <button class="bump">Bump</button>
+      <button class="delete">Delete</button>
+      <button class="update_checkpoint next">Update &amp; &gt;&gt;</button>
+    </li>
+  </ul>
+</div>
+<%= form_for @world do |f| %>
+  <input type="hidden" name="checkpoints_json" id="checkpoints_json" />
+  <div class="field">
+    <%= f.label :name %>
+    <%= f.text_field :name %>
+  </div>
+  <div class="field">
+    <%= label_tag :world_index %>
+    <% if @world.world_index == 0 %>
+      <div class="value">0 (main world)</div>
+    <% else %>
+      <%= f.text_field :world_index %>
+    <% end %>
+  </div>
+  <div class="field">
+    <%= f.label :grid_width %>
+    <%= f.text_field :grid_width %>
+  </div>
+  <div class="field">
+    <%= f.label :grid_height %>
+    <%= f.text_field :grid_height %>
+  </div>
+  <div class="field">
+    <%= f.label :hint %>
+    <%= f.text_field :hint %>
+  </div>
+  <div class="field">
+    <%= f.label :background_color, "Color" %>
+    <%= f.text_field :background_color %>
+  </div>
+  <div class="field">
+    <%= f.label :game %>
+    <%= f.collection_select(:game_id, Game.all, :id, :name, :include_blank => 'Please select a game') %>
+  </div>
+  <%= submit_tag "Save", :class => "create-submit button" %>
+<% end %>
+<script>
+  swGame.checkpoints = <%= @world.checkpoints.to_json(:with_level_id => true).html_safe %>;
+</script>

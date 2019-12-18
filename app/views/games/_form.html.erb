@@ -1,0 +1,28 @@
+<% if @game and @game.errors.any? %>
+<div class="error">
+  <ul>
+  <% @game.errors.full_messages.each do |msg| %>
+    <li><%= msg %></li>
+  <% end %>
+  </ul>
+</div>
+<% end %>
+<%= form_for @game do |f| %>
+  <div class="field">
+    <%= f.label :name %>
+    <%= f.text_field :name %>
+  </div>
+  <div class="field">
+    <%= f.label :sizing_mode %>
+    <%= f.text_field :sizing_mode %>
+  </div>
+  <div class="field">
+    <%= f.label :width %>
+    <%= f.text_field :width %>
+  </div>
+  <div class="field">
+    <%= f.label :height %>
+    <%= f.text_field :height %>
+  </div>
+  <%= submit_tag "Save", :class => "create-submit button" %>
+<% end %>

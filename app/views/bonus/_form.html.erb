@@ -1,0 +1,34 @@
+<% if @bonu and @bonu.errors.any? %>
+<div class="error">
+  <ul>
+  <% @bonu.errors.full_messages.each do |msg| %>
+    <li><%= msg %></li>
+  <% end %>
+  </ul>
+</div>
+<% end %>
+<%= form_for @bonu do |f| %>
+  <div class="field">
+    <%= f.label :name %>
+    <%= f.text_field :name %>
+  </div>
+  <div class="field">
+    <%= f.label :family %>
+    <%= f.text_field :family %>
+  </div>
+  <div class="field">
+    <%= f.label :set %>
+    <%= f.text_field :set %>
+  </div>
+  <div class="field options" data-theBeast="spriteOptions">
+    <a class="add-option" href="#">add option</a>
+    <% @bonu.options.each_with_index do |option, i| %>
+    <div class="option">
+      <input class="label" type="text" name="label_<%= i %>" value="<%= option.label %>"/>
+      <input class="content" type="text" name="content_<%= i %>" value="<%= option.content %>"/>
+      <div class="delete">x</div>
+    </div>
+    <% end %>
+  </div>
+  <%= submit_tag "Save", :class => "create-submit button" %>
+<% end %>

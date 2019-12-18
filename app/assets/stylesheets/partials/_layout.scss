@@ -1,0 +1,48 @@
+@mixin button {
+  opacity: 0.85;
+  &:hover {
+    cursor: pointer;
+    opacity: 1;
+  }
+}
+canvas {
+  position: absolute;
+}
+#canvas-bg {
+  z-index:5;
+}
+#canvas {
+  z-index:10;
+}
+#canvas-ui {
+  z-index:15;
+}
+#full-canvas {
+  z-index:20;
+  position:fixed;
+  top: 0;
+  left: 0;
+}
+#game {
+  position: absolute;
+  top: 0;
+  left: 0;
+}
+#main {
+  position: relative;
+}
+#overlay {
+  z-index:25;
+  position: absolute;
+  top: 20px;
+  left: 0;
+  bottom: 0;
+  right: 0;
+}
+#info {
+  position: absolute;
+  bottom: -20px;
+  left: 0px;
+  color: #fff;
+  font-family: monospace;
+}

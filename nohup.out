@@ -1,0 +1,84 @@
+WARNING: Nokogiri was built against LibXML version 2.9.0, but has dynamically loaded 2.7.8
+=> Booting WEBrick
+=> Rails 3.2.13 application starting in production on http://0.0.0.0:3000
+=> Call with -d to detach
+=> Ctrl-C to shutdown server
+[2013-07-19 18:34:26] INFO  WEBrick 1.3.1
+[2013-07-19 18:34:26] INFO  ruby 1.9.3 (2013-02-22) [x86_64-darwin12.3.0]
+[2013-07-19 18:34:26] INFO  WEBrick::HTTPServer#start: pid=33858 port=3000
+[2013-07-19 18:34:37] INFO  going to shutdown ...
+[2013-07-19 18:34:37] INFO  WEBrick::HTTPServer#start done.
+Exiting
+WARNING: Nokogiri was built against LibXML version 2.9.0, but has dynamically loaded 2.7.8
+=> Booting WEBrick
+=> Rails 3.2.13 application starting in production on http://0.0.0.0:3000
+=> Call with -d to detach
+=> Ctrl-C to shutdown server
+[2013-07-19 18:35:20] INFO  WEBrick 1.3.1
+[2013-07-19 18:35:20] INFO  ruby 1.9.3 (2013-02-22) [x86_64-darwin12.3.0]
+[2013-07-19 18:35:20] INFO  WEBrick::HTTPServer#start: pid=33897 port=3000
+Started GET "/" for 127.0.0.1 at 2013-07-19 18:35:22 -0400
+Processing by HomeController#index as */*
+  Rendered home/_game.html.erb (0.4ms)
+  Rendered home/_game_with_frame.html.erb (1.8ms)
+  Rendered home/index.html.erb within layouts/game (4204.4ms)
+Completed 500 Internal Server Error in 4395ms
+
+ActionView::Template::Error (game.css isn't precompiled):
+    12:     <link rel="apple-touch-startup-image" href="/touch-icon_x2.png" />
+    13:     <link rel="shortcut icon" href="/favicon.ico" type="image/x-icon" />
+    14:     <title>Spiderdash</title>
+    15:     <%= stylesheet_link_tag    "game", :media => "all" %>
+    16:     <%= javascript_include_tag "game" %>
+    17:     <%= csrf_meta_tags %>
+    18:   </head>
+  app/views/layouts/game.html.erb:15:in `_app_views_layouts_game_html_erb__4171430184768200477_70245017787380'
+  app/controllers/home_controller.rb:11:in `index'
+
+
+Started GET "/" for 127.0.0.1 at 2013-07-19 18:35:26 -0400
+Processing by HomeController#index as */*
+  Rendered home/_game.html.erb (0.0ms)
+  Rendered home/_game_with_frame.html.erb (0.2ms)
+  Rendered home/index.html.erb within layouts/game (3886.4ms)
+Completed 500 Internal Server Error in 3889ms
+
+ActionView::Template::Error (game.css isn't precompiled):
+    12:     <link rel="apple-touch-startup-image" href="/touch-icon_x2.png" />
+    13:     <link rel="shortcut icon" href="/favicon.ico" type="image/x-icon" />
+    14:     <title>Spiderdash</title>
+    15:     <%= stylesheet_link_tag    "game", :media => "all" %>
+    16:     <%= javascript_include_tag "game" %>
+    17:     <%= csrf_meta_tags %>
+    18:   </head>
+  app/views/layouts/game.html.erb:15:in `_app_views_layouts_game_html_erb__4171430184768200477_70245017787380'
+  app/controllers/home_controller.rb:11:in `index'
+
+
+[2013-07-19 18:35:32] INFO  going to shutdown ...
+Exiting
+/Users/standup75/.rvm/gems/ruby-1.9.3-p392/gems/rack-1.4.5/lib/rack/handler/webrick.rb:24:in `shutdown': undefined method `shutdown' for nil:NilClass (NoMethodError)
+	from /Users/standup75/.rvm/gems/ruby-1.9.3-p392/gems/rack-1.4.5/lib/rack/server.rb:262:in `block in start'
+	from /Users/standup75/.rvm/rubies/ruby-1.9.3-p392/lib/ruby/1.9.1/webrick/server.rb:121:in `call'
+	from /Users/standup75/.rvm/rubies/ruby-1.9.3-p392/lib/ruby/1.9.1/webrick/server.rb:121:in `join'
+	from /Users/standup75/.rvm/rubies/ruby-1.9.3-p392/lib/ruby/1.9.1/webrick/server.rb:121:in `block (2 levels) in start'
+	from /Users/standup75/.rvm/rubies/ruby-1.9.3-p392/lib/ruby/1.9.1/webrick/server.rb:121:in `each'
+	from /Users/standup75/.rvm/rubies/ruby-1.9.3-p392/lib/ruby/1.9.1/webrick/server.rb:121:in `block in start'
+	from /Users/standup75/.rvm/rubies/ruby-1.9.3-p392/lib/ruby/1.9.1/webrick/server.rb:22:in `start'
+	from /Users/standup75/.rvm/rubies/ruby-1.9.3-p392/lib/ruby/1.9.1/webrick/server.rb:89:in `start'
+	from /Users/standup75/.rvm/gems/ruby-1.9.3-p392/gems/rack-1.4.5/lib/rack/handler/webrick.rb:13:in `run'
+	from /Users/standup75/.rvm/gems/ruby-1.9.3-p392/gems/rack-1.4.5/lib/rack/server.rb:268:in `start'
+	from /Users/standup75/.rvm/gems/ruby-1.9.3-p392/gems/railties-3.2.13/lib/rails/commands/server.rb:70:in `start'
+	from /Users/standup75/.rvm/gems/ruby-1.9.3-p392/gems/railties-3.2.13/lib/rails/commands.rb:55:in `block in <top (required)>'
+	from /Users/standup75/.rvm/gems/ruby-1.9.3-p392/gems/railties-3.2.13/lib/rails/commands.rb:50:in `tap'
+	from /Users/standup75/.rvm/gems/ruby-1.9.3-p392/gems/railties-3.2.13/lib/rails/commands.rb:50:in `<top (required)>'
+	from script/rails:6:in `require'
+	from script/rails:6:in `<main>'
+WARNING: Nokogiri was built against LibXML version 2.9.0, but has dynamically loaded 2.7.8
+=> Booting WEBrick
+=> Rails 3.2.13 application starting in production on http://0.0.0.0:3000
+=> Call with -d to detach
+=> Ctrl-C to shutdown server
+[2013-07-19 18:36:14] INFO  WEBrick 1.3.1
+[2013-07-19 18:36:14] INFO  ruby 1.9.3 (2013-02-22) [x86_64-darwin12.3.0]
+[2013-07-19 18:36:14] INFO  WEBrick::HTTPServer#start: pid=36307 port=3000

@@ -1,0 +1,11 @@
+<% if !@tiles.empty? %>
+  <ul class="item-list">
+  <% @tiles.each do |tile| %>
+    <li><%= link_to tile.name, tile %></li>
+  <% end %>
+  </ul>
+<% else %>
+  <div> no tiles available.</div>
+<% end %>
+
+<%= link_to "create a new tiles >>", new_tile_path, :class => "create-link action-link" %>

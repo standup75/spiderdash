@@ -1,0 +1,6 @@
+level_0:
+  name: "intro"
+  index: 0
+  world: world
+  tile_count_x: 5
+  tile_count_y: 5

@@ -1,0 +1,36 @@
+<div id="load-fonts"><p class="akaDylan">akaDylan</p><p class="peralta">peralta</p><p class="stencilia">stencilia</p></div>
+<div id="background"></div>
+<div id="game">
+  <canvas id="canvas-bg">
+    No support for canvas, no fun: you need to update your browser. Choose Chrome, for example: <a href="http://chrome.com">http://chrome.com</a>
+  </canvas>
+  <canvas id="canvas"></canvas>
+  <canvas id="canvas-ui"></canvas>
+</div>
+<canvas id="full-canvas"></canvas>
+<div id="overlay">
+  <div id="info"></div>
+  <div id='sync-button' class="css_sprite-sync-cloud"></div>
+  <div id="sync-modal">
+    <div id="sync-close" class="css_sprite-close"></div>
+    <div id="sync-status">
+      <p>The game is sync with the following email's account:</p>
+      <div id="sync-email"></div>
+      <div id="sync-resync" class="css_sprite-resync"></div>
+      <div id="sync-delete" class="css_sprite-trash"></div>
+    </div>
+    <form id="sync-form">
+      <p>Login or register to sync your account:</p>
+      <input type="email" id="sync-email-input" placeholder="Email" required/>
+      <input type="password" id="sync-password-input" placeholder="Password (empty if forgotten)"/>
+      <input type="submit" id="sync-submit" class="css_sprite-submit" value="" />
+    </form>
+  </div>
+  <div id="feedback-form">
+    <div id="feedback-close" class="css_sprite-close"></div>
+    <p>I am super interested in your feedback! Tell me!</p>
+    <textarea id="feedback-content"></textarea>
+    <button id="feedback-submit">Send</button>
+  </div>
+  <div id="notification"></div>
+</div>

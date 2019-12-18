@@ -1,0 +1,22 @@
+<div class="field">
+  <%= label_tag :name %>
+  <div class="value"><%= @bonu.name %></div>
+</div>
+<div class="field">
+  <%= label_tag :family %>
+  <div class="value"><%= @bonu.family %></div>
+</div>
+<div class="field">
+  <%= label_tag :set %>
+  <div class="value"><%= @bonu.set %></div>
+</div>
+<div class="field">
+  <%= label_tag :options %>
+  <% @bonu.options.each do |option| %>
+  <div class="value"><%= option.label %> : <%= option.content %></div>
+  <% end %>
+</div>
+<%= link_to "delete this bonus >>", bonu_path, :method => :delete, :class => "margin-top action-link", :confirm => "Are you sure you want to delete this bonus?" %>
+<%= link_to "edit this bonus >>", edit_bonu_path, :class => "margin-top-small action-link" %>
+<%= link_to "duplicate this bonus >>", duplicate_bonu_path, :class => "margin-top-small action-link" %>
+<%= link_to "back >>", bonus_path, :class => "margin-top-small action-link" %>

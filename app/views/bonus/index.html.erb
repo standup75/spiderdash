@@ -1,0 +1,11 @@
+<% if !@bonus.empty? %>
+  <ul class="item-list">
+  <% @bonus.each do |bonu| %>
+    <li><%= link_to bonu.name, bonu %></li>
+  <% end %>
+  </ul>
+<% else %>
+  <div> no bonus available.</div>
+<% end %>
+
+<%= link_to "create a new bonus >>", new_bonu_path, :class => "create-link action-link" %>

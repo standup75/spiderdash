@@ -1,0 +1,33 @@
+<div class="field">
+  <%= label_tag :name %>
+  <div class="value"><%= @game.name %></div>
+</div>
+<div class="field">
+  <%= label_tag :sizing_mode %>
+  <div class="value"><%= @game.sizing_mode %></div>
+</div>
+<div class="field">
+  <%= label_tag :width %>
+  <div class="value"><%= @game.width %></div>
+</div>
+<div class="field">
+  <%= label_tag :height %>
+  <div class="value"><%= @game.height %></div>
+</div>
+<% if @game.worlds %>
+<div class="field">
+  <%= label_tag :worlds %>
+  <div class="value">
+    <ul>
+      <% @game.worlds.each do |world| %>
+        <li><%= link_to world.name, world %></li>
+      <% end %>
+    </ul>
+  </div>
+</div>
+<% end %>
+<%= link_to "delete this game >>", game_path, :method => :delete, :class => "margin-top action-link", :confirm => "Are you sure you want to delete this game?" %>
+<%= link_to "deep delete this game >>", game_path(:deep => true), :method => :delete, :class => "margin-top-small action-link", :confirm => "Are you sure you want to delete this game and all its children?" %>
+<%= link_to "edit this game >>", edit_game_path, :class => "margin-top-small action-link" %>
+<%= link_to "duplicate this game >>", duplicate_game_path, :class => "margin-top-small action-link" %>
+<%= link_to "back >>", games_path, :class => "margin-top-small action-link" %>

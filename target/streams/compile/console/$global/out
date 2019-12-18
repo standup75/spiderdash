@@ -1,0 +1,11 @@
+[0m[[0mdebug[0m] [0mStarting sandboxed run...[0m
+[0m[[0mdebug[0m] [0mWaiting for threads to exit or System.exit to be called.[0m
+[0m[[0mdebug[0m] [0mWaiting for thread run-main to exit[0m
+[0m[[0minfo[0m] [0mStarting scala interpreter...[0m
+[0m[[0mdebug[0m] [0m  Boot classpath: /Library/Java/JavaVirtualMachines/1.6.0_43-b01-447.jdk/Contents/Classes/jsfd.jar:/Library/Java/JavaVirtualMachines/1.6.0_43-b01-447.jdk/Contents/Classes/classes.jar:/System/Library/Frameworks/JavaVM.framework/Frameworks/JavaRuntimeSupport.framework/Resources/Java/JavaRuntimeSupport.jar:/Library/Java/JavaVirtualMachines/1.6.0_43-b01-447.jdk/Contents/Classes/ui.jar:/Library/Java/JavaVirtualMachines/1.6.0_43-b01-447.jdk/Contents/Classes/laf.jar:/Library/Java/JavaVirtualMachines/1.6.0_43-b01-447.jdk/Contents/Classes/sunrsasign.jar:/Library/Java/JavaVirtualMachines/1.6.0_43-b01-447.jdk/Contents/Classes/jsse.jar:/Library/Java/JavaVirtualMachines/1.6.0_43-b01-447.jdk/Contents/Classes/jce.jar:/Library/Java/JavaVirtualMachines/1.6.0_43-b01-447.jdk/Contents/Classes/charsets.jar:/Users/standup75/.sbt/boot/scala-2.9.2/lib/scala-library.jar[0m
+[0m[[0mdebug[0m] [0m  Classpath: /Users/standup75/Code/spiderdash_editor/target/scala-2.9.2/classes:/Users/standup75/.sbt/boot/scala-2.9.2/lib/scala-compiler.jar:/Users/standup75/.sbt/boot/scala-2.9.2/lib/jansi.jar:/Users/standup75/.sbt/boot/scala-2.9.2/lib/jline.jar[0m
+[0m[[0minfo[0m] [0m[0m
+[0m[[0mdebug[0m] [0m	Thread run-main exited.[0m
+[0m[[0mdebug[0m] [0mInterrupting remaining threads (should be all daemons).[0m
+[0m[[0mdebug[0m] [0mSandboxed run complete..[0m
+[0m[[0mdebug[0m] [0mExited with code 0[0m

@@ -1,0 +1,11 @@
+<% if !@sprites.empty? %>
+  <ul class="item-list">
+  <% @sprites.each do |sprite| %>
+    <li><%= link_to sprite.name, sprite %></li>
+  <% end %>
+  </ul>
+<% else %>
+  <div> no sprite available.</div>
+<% end %>
+
+<%= link_to "create a new sprite >>", new_sprite_path, :class => "create-link action-link" %>

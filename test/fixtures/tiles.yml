@@ -1,0 +1,10 @@
+tile_0:
+  name: "wall part 1"
+  picture_url: "/assets/tmp/wall1.png"
+  size: 32
+
+tile_1:
+  name: "wall part 2"
+  picture_url: "/assets/tmp/wall2.png"
+  size: 32
+  

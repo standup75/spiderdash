@@ -1,0 +1,16 @@
+<div id="game-content">
+  <div id="feedback-logo">
+    <a id="feedback-link" href="javascript:void(0)">feedback</a>
+    <a target="_blank" href="http://standupweb.net" class="css_sprite-sw_logo">sw</a>
+  </div>
+  <div id="ui-controls">
+    <a id="fullscreen" href="javascript:void(0)" class="css_sprite-fullscreen"></a>
+    <a id="pause-btn" href="javascript:void(0)" class="css_sprite-pause"></a>
+    <a id="exit-btn" href="javascript:void(0)" class="css_sprite-exit"></a>
+  </div>
+  <audio loop id="theme-song">
+    <source src="/assets/theme.mp3" type='audio/mpeg; codecs="mp3"'>
+    <source src="/assets/theme.ogg" type='audio/ogg; codecs="vorbis"'>
+  </audio>
+  <%= render "game" %>
+</div>

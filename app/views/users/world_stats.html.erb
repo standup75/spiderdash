@@ -1,0 +1,16 @@
+<h1><%= @world.name %> World Stats for <%= @user.email %></h1>
+<h2>Success/Fail Ratio</h2>
+<ul class="bar-diag">
+  <% @success_percents.each_with_index do |success_percent, i| %>
+    <li style = "height: <%= 2 * success_percent %>px; width: <%= 100 / @level_count %>%; margin-top: <%= 200 - 2 * success_percent %>px; "><p><%= i + 1 %></p></li>
+  <% end %>
+</ul>
+<h2>Average Times</h2>
+<ul class="table">
+  <% @total_times.each_with_index do |time, i| %>
+    <li>
+      <div class="label"><%= i + 1 %></div>
+      <div class="value"><%= time %>s</div>
+    </li>
+  <% end %>
+</ul>

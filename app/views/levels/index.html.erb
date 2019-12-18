@@ -1,0 +1,21 @@
+<% if !@worlds.empty? %>
+  <ul class="world-selector" data-theBeast="levelByWorldSelector">
+    <% @worlds.each do |world| %>
+      <li data-world="<%= world.id %>"><%= world.name %></li>
+    <% end %>
+    <li data-world="no">unattributed</li>
+  </ul>
+<% end %>
+
+
+<% if !@levels.empty? %>
+  <ul class="item-list">
+  <% @levels.each do |level| %>
+    <li data-world="<%= level.world ? level.world.id : "no" %>"><%= link_to level_name(level), level %></li>
+  <% end %>
+  </ul>
+<% else %>
+  <div> no level available.</div>
+<% end %>
+
+<%= link_to "create a new level >>", new_level_path, :class => "create-link action-link" %>

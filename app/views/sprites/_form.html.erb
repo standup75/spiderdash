@@ -1,0 +1,40 @@
+<% if @sprite and @sprite.errors.any? %>
+<div class="error">
+  <ul>
+  <% @sprite.errors.full_messages.each do |msg| %>
+    <li><%= msg %></li>
+  <% end %>
+  </ul>
+</div>
+<% end %>
+<%= form_for @sprite do |f| %>
+  <div class="field">
+    <%= f.label :name %>
+    <%= f.text_field :name %>
+  </div>
+  <div class="field">
+    <%= f.label :family %>
+    <%= f.text_field :family %>
+  </div>
+  <div class="field">
+    <%= f.label :set %>
+    <%= f.text_field :set %>
+  </div>
+  <div class="field">
+    <%= f.label :helping_sprite %>
+    <%= f.collection_select(:helping_sprite_id, Sprite.where(:helping_sprite_id => nil), :id, :name, :include_blank => 'Please select a sprite') %>
+  </div>
+  <div class="field options" data-theBeast="spriteOptions">
+    <a class="add-option" href="#">add option</a>
+    <% @sprite.options.each_with_index do |option, i| %>
+      <% unless option.level_id %>
+        <div class="option">
+          <input class="label" type="text" name="label_<%= i %>" value="<%= option.label %>"/>
+          <input class="content" type="text" name="content_<%= i %>" value="<%= option.content %>"/>
+          <div class="delete">x</div>
+        </div>
+      <% end %>
+    <% end %>
+  </div>
+  <%= submit_tag "Save", :class => "create-submit button" %>
+<% end %>

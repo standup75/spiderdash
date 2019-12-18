@@ -1,0 +1,53 @@
+lt_0:
+  level: level_0
+  tile: tile_0
+  x: 0
+  y: 0
+
+lt_1:
+  level: level_0
+  tile: tile_0
+  x: 1
+  y: 0
+
+lt_2:
+  level: level_0
+  tile: tile_0
+  x: 2
+  y: 0
+
+lt_3:
+  level: level_0
+  tile: tile_0
+  x: 3
+  y: 0
+
+lt_4:
+  level: level_0
+  tile: tile_0
+  x: 4
+  y: 0
+
+lt_5:
+  level: level_0
+  tile: tile_0
+  x: 0
+  y: 1
+
+lt_6:
+  level: level_0
+  tile: tile_0
+  x: 0
+  y: 2
+
+lt_7:
+  level: level_0
+  tile: tile_0
+  x: 0
+  y: 3
+
+lt_8:
+  level: level_0
+  tile: tile_0
+  x: 0
+  y: 4

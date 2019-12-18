@@ -1,0 +1,73 @@
+@import "compass";
+@import "compass/css3";
+
+$font-color:  #2a2a2a;
+$font-family: akaDylan;
+$text-font-family: peralta;
+$yellow: #f7f124;
+
+$css_sprite-sprite-dimensions: true;
+$css_sprite-spacing: 5px;
+@import "css_sprite/*.png";
+@include all-css_sprite-sprites;
+
+@include global-reset;
+@font-face {
+    font-family: akaDylan;
+    src: url('akaDylan Plain.ttf') format('truetype');
+    font-weight: normal;
+    font-style: normal;
+}
+@font-face {
+    font-family: peralta;
+    src: url('Peralta-Regular.ttf') format('truetype');
+    font-weight: normal;
+    font-style: normal;
+}
+@font-face {
+    font-family: stencilia;
+    src: url('Stencilia-A.ttf') format('truetype');
+    font-weight: normal;
+    font-style: normal;
+}
+
+a {
+  outline: none;
+}
+
+$break-small: 420px;
+$break-large: 880px;
+
+@mixin respond-to($medias...) {
+  @each $media in $medias {
+    @if $media == handhelds {
+      @media only screen and (max-width: $break-small) { @content; }
+    }
+    @else if $media == mediumscreens {
+      @media only screen and (min-width: $break-small + 1) and (max-width: $break-large - 1) { @content; }
+    }
+    @else if $media == widescreens {
+      @media only screen and (min-width: $break-large) { @content; }
+    }
+  }
+}
+
+.margin-top { margin-top: 30px; }
+.margin-top-small { margin-top: 10px; }
+.margin-bottom { margin-bottom: 30px; }
+.margin-left { margin-left: 30px; }
+.margin-left-small { margin-left: 10px; }
+.margin-right { margin-right: 30px; }
+.left { float: left; }
+.right { float: right; }
+.container { overflow: hidden; }
+.italic { font-style: italic; }
+
+#load-fonts {
+  position: fixed; 
+  opacity: 0;
+  left: -1000px;
+  .akaDylan { font-family: akaDylan; }
+  .peralta { font-family: peralta; }
+  .stencilia { font-family: stencilia; }
+}

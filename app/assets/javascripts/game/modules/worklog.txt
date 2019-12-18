@@ -1,0 +1,39 @@
+6/12/2014
+
+7:40 - 8:05 -> Spiderdash Iron out bugs: Hell world bg map, path.reset should return null, electricity v length is half the size
+8:10 - 8:35 -> Spiderdash Iron out bugs: Investigate why can't click on world end gate
+8:40 - 9:20 -> Spiderdash Iron out bugs: Investigate why can't click on world end gate: stupid issue in gameManager.cheat and findNextCp, still an issue with getLastAvailableCheckpointIndex because I can't access the world end gate although last checkpoint index seems good (11 for color hills)
+9:30 - 9:55 -> PTV-2934: ipad orientation issue. 4 orientations issues: when going from portrait:
+							 - left menu on movies/genre is locked 
+							 - assets pictures are too big (not enough room for title + metadata)
+							 - ios 7 adds 20 pixels in landscape, and scrolls down, making the first entry of the left menu look cut out
+							 - UI seems extremely slow: over scroll to create the bouncy effect takes a long time and isn't fluid at all
+10:00 - 10:25 -> Looking into bouncefix library, see if would help (https://github.com/jaridmargolin/bouncefix.js)
+10:30 - 10:45 -> stand up
+10:55 - 11:15 -> Looking into bouncefix library, helping Shelby with a spinner issue from PTV-2931
+11:20 - 11:45 -> pick the good part from bouncefix and try
+12:00 - 12:25 -> Make a module for the fix. Investigate the other issue: assets pictures are too big (not enough room for title + metadata)
+12:30 - 13:10 -> Bought cheese and ham, made dough (150g butter, 250g flour, 5cl water, salt). Need to rest an hour in the fridge
+13:15 - 14:10 -> Read and sent feedback to eddie about Lifestyle Meets Market: Bohemian - Entrepreneurs in Creative Industries
+14:15 - 14:45 -> Made tourte au jambon with my shitty dough...
+15:00 - 15:20 -> More test on iosBounceFix. Code Review for Dave PTV-2972
+15:20 - 15:30 -> Spiderdash: Still have not figured out the cause...
+15:30 - 15:50 -> Eat that tourte au jambon (dough gets a 8/20)
+15:50 - 18:00 -> Videology: Brazil - Croatia (3-1 good forecast but no bet with JJ) - Merged PTV-2934 (Oops thought it was cr, but no...)
+18:15 - 19:10 -> Spiderdash debug click on world end gate done (cna now create a new kind of gate for end of game)
+19:10 - 19:35 -> Bass: river people - love games - double tap slap training - jamiroquai
+
+evening: Took Kevin's car with Meg to grocery store by the williamsburg bridge, chilled, talked with Meg in the kitchen about tornados, with in a bad mood at the beginning of the evening but cam out of it, still tired cause woke up too early. downloaded true blood, transcoding it.
+
+morning: Slept around 1am, woke up 8:45. Start working 9:45, after seeing Meg, breakfast, watching videos on lequipe.fr
+
+10:00 - 10:25 -> FE: Initialize SuddenLink Assets for Phone (PTV-2978)
+10:30 - 11:00 -> stand up
+11:00 - 11:25 -> FE: Initialize SuddenLink Assets for Phone (PTV-2978)
+11:30 - 11:55 -> Talk with Jessica - Synacor contract review
+12:00 - 12:25 -> Code Review for alessandro PTV-2468
+12:30 - 12:50 -> Code Review for alessandro PTV-2468 - add test instructions for PTV-2897
+13:05 - 13:30 -> Coursera Video (Scala Map) + Lunch (end of the tourte and yet another salad)
+13:35 - 14:10 -> Brazil - Cameroon on univision
+14:00 - 16:00 -> Demo - retrospective and working on soundogram (adding tags in url) and helping Brett with some stuff I messed up on CI
+16:00 - 16:45 -> Spain - Netherlands on univision and working on soundogram (adding tags in url)

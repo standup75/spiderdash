@@ -1,0 +1,32 @@
+<% if @user and @user.errors.any? %>
+<div class="error">
+  <ul>
+  <% @user.errors.full_messages.each do |msg| %>
+    <li><%= msg %></li>
+  <% end %>
+  </ul>
+</div>
+<% end %>
+<%= form_for @user do |f| %>
+  <div class="field">
+    <%= f.label :name %>
+    <%= f.text_field :name %>
+  </div>
+  <div class="field">
+    <%= f.label :email %>
+    <%= f.text_field :email %>
+  </div>
+  <div class="field">
+    <%= f.label :high_score %>
+    <%= f.text_field :high_score %>
+  </div>
+  <div class="field">
+    <%= f.label :high_level %>
+    <%= f.text_field :high_level %>
+  </div>
+  <div class="field">
+    <%= f.label :role %>
+    <%= f.collection_select(:role_id, Role.all, :id, :name, :prompt => 'Please select a role') %>
+  </div>
+  <%= submit_tag "Save", :class => "create-submit button" %>
+<% end %>

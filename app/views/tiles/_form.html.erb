@@ -1,0 +1,28 @@
+<% if @tile and @tile.errors.any? %>
+<div class="error">
+  <ul>
+  <% @tile.errors.full_messages.each do |msg| %>
+    <li><%= msg %></li>
+  <% end %>
+  </ul>
+</div>
+<% end %>
+<%= form_for @tile do |f| %>
+  <div class="field">
+    <%= f.label :name %>
+    <%= f.text_field :name %>
+  </div>
+  <div class="field">
+    <%= f.label :picture_url %>
+    <%= f.text_field :picture_url %>
+  </div>
+  <div class="field">
+    <%= f.label :size %>
+    <%= f.text_field :size %>
+  </div>
+  <div class="field">
+    <%= f.label :set %>
+    <%= f.text_field :set %>
+  </div>
+  <%= submit_tag "Save", :class => "create-submit button" %>
+<% end %>

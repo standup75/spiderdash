@@ -1,0 +1,478 @@
+@import "compass";
+@import "compass/css3";
+@import "partials/global";
+@import "partials/layout";
+@import "partials/qunit";
+
+$link-color:         hsla(186, 64%, 45%, 1);
+$link-hover-color:   hsla(186, 74%, 55%, 1);;
+$link-focus-color:   false;
+$link-active-color:  false;
+$link-visited-color: false;
+$color0-darker: hsla(203, 57%, 5%, 1);
+$color0-dark: hsla(203, 67%, 10%, 1);
+$color0: hsla(203, 77%, 25%, 1);
+$color0-light: hsla(203, 87%, 35%, 1);
+$color1: hsla(197, 72%, 35%, 1);
+$color2: hsla(174, 56%, 55%, 1);
+$color2-light: hsla(210, 32%, 85%, 1);
+$color3: hsla(175, 11%, 95%, 1);
+body {
+  background: $color0-darker;
+  color: $color3;
+}
+
+a {
+  @include link-colors($link-color, $link-hover-color, $link-focus-color, $link-active-color, $link-visited-color);
+  text-decoration: none;
+}
+
+h1 {
+  font-weight: bold;
+  font-size: 22px;
+  margin-bottom: 20px;
+}
+
+h2 {
+  font-weight: bold;
+  margin-bottom: 10px;
+  color: #ddd;
+}
+
+button {
+  margin-bottom: 10px;
+  padding: 5px;
+}
+
+#editor {
+  font-family: "HelveticaNeue-Light", "Helvetica Neue Light", "Helvetica Neue", Helvetica, Arial, "Lucida Grande", sans-serif;   
+  header {
+    h1 {
+      text-align: center;
+      display: block;
+      margin-right: 10px;
+      a:hover { background: none; }
+      @include respond-to(widescreens) {
+        display: inline-block;
+      }
+    }
+    padding: 15px;
+    overflow: hidden;
+    border-bottom: 1px solid $color0;
+    nav {
+      margin-top: -5px;
+      display: inline-block;
+      vertical-align: top;
+      text-align: left;
+      li {
+        display: inline-block;
+        a { color: $color2; }
+        span, a.current { color: $color3; }
+        span, a {
+          font-weight: bold;
+          padding: 10px;
+          letter-spacing: 1px;
+          display: block;
+          width: 80px;
+          text-align: center;
+        }
+        a:hover {
+          color: $color2-light;
+        }
+      }
+    }
+    a:hover {
+      background: $color0;
+    }
+  }
+}
+.world-selector {
+  margin-bottom: 20px;
+  overflow: hidden;
+  li {
+    padding: 2px 15px;
+    border-left: 1px solid #999;
+    cursor: pointer;
+    float: left;
+    color: #ccc;
+    &.activated, &:hover { color: #fff; }
+  }
+  li:first-child {
+    padding-left: 0;
+    border: 0;
+  }
+}
+.logout {
+  position: absolute;
+  top: 0;
+  right: 0;
+  padding: 3px 3px 8px 8px;
+  display: block;
+  font-size: 11px;
+  background: hsla(0,0%,30%,1);
+  @include border-radius(0 0 0 15px);
+}
+#content {
+  margin: 15px;
+  overflow: hidden;
+}
+#notification {
+  position: fixed;
+  bottom: 0;
+  width: 100%;
+}
+.field .field_with_errors {
+  width: 120px;
+  label { float: right; }
+}
+#random-tiles-percent {
+  width: 30px;
+  margin-right: 5px;
+}
+#generate-random-tiles {
+  margin-left: 20px;
+  padding: 10px;
+}
+.field {
+  margin-bottom: 10px;
+  overflow: hidden;
+  >* {
+    display: block;
+    float: left;
+    @include respond-to(handhelds) { float: none;}
+  }
+  label {
+    width: 100px;
+    margin-right: 20px;
+    text-align: right;
+    line-height: 35px;
+    font-size: 14px;
+    @include respond-to(handhelds) { text-align: left;}
+  }
+  input, select {
+    color: $color2;
+    background: $color0-darker;
+    font-size: 16px;
+    &:focus { background: $color0-dark; }
+  }
+  input {
+    border: 1px solid $color0;
+    width: 200px;
+    padding: 8px;
+    &[disabled] {
+      border: 1px solid #333;
+      color: #aaa;
+    }
+  }
+  textarea {
+    font-family: monospace;
+    resize: none;
+    overflow: hidden;
+    font-size: 30px;
+    &.readonly {
+      background: #000;
+      color: #aaa;
+    }
+  }
+  select {
+    width: 220px;
+    height: 38px;
+  }
+  .value {
+    padding: 9px;
+    font-size: 16px;
+    color: $color3;
+    font-weight: bold;
+    li {
+      float: none;
+      margin-bottom: 5px;
+    }
+    &.green { background-color: #282; }
+    &.red { background-color: #822; }
+    &.red, &.green {
+      min-height: 20px;
+      min-width: 20px;
+    }
+  }
+  .legend {
+    float: left;
+    margin-left: 10px;
+    line-height: 24px;
+  }
+  &.options {
+    >* {
+      float: none;
+    }
+    a {
+      margin-bottom: 10px;
+      font-style: italic;
+    }
+    .option {
+      overflow: hidden;
+      >* {
+        float:left;
+        display: block;
+        margin-right: 5px;
+      }
+    }
+    .delete {
+      padding: 4px 6px 4px 6px;
+      background: red;
+      color: black;
+      border-radius: 10px;
+      margin-top: 9px;
+      font-weight: bold;
+      font-family: arial;
+      cursor: pointer;
+    }
+  }
+}
+.label {
+  font-size: 14px;
+  margin-bottom: 15px;
+}
+.login-form {
+  float: left;
+  margin-top: 20px;
+  input[type=submit] {
+    float: right;
+    @include respond-to(handhelds) { float: none; }
+  }
+}
+.create-link {
+  width: 160px;
+  text-align: center;
+  margin: 40px 0 0 0;
+}
+.action-link {
+  display: block;
+  font-size: 11px;
+}
+.left-col {
+  border-right: 1px solid $color0;
+  width: 160px;
+  padding: 20px;
+  float:left;
+}
+.item-list-small, .item-list {
+  border-top: 1px solid $color0;
+  li {
+    border-bottom: 1px solid $color0;
+    display:block;
+    a {
+      padding: 20px;
+      text-align: center;
+      display: block;
+      background: $color0-dark;
+      color: $color2;
+      &:hover {
+        @include background-image(linear-gradient($color1, $color0 35%, $color0 65%, $color1));
+      }
+    }
+  }
+}
+.item-list-small {
+  font-size: 12px;
+  li {
+    a {
+      padding: 10px;
+    }
+  }
+}
+.button {
+  padding: 5px;
+  color: $link-color;
+  background: $color0;
+  border: 1px solid $color0-light;
+  &:hover {
+    color: $link-hover-color;
+    background: $color0-light;
+    cursor: pointer;
+  }
+}
+.create-submit {
+  display: block;
+  margin: 40px 0 20px 120px;
+  font-size: 11px;
+  width: 220px;
+  text-align: center;
+  @include respond-to(handhelds) { margin-left: 0; }
+}
+.error {
+  margin: 20px;
+  padding: 5px 10px;
+  background: $color1;
+  color: $color3;
+  li {
+    border-top: 1px dotted $color2;
+    padding: 10px 0;
+    &:first-child { border: 0; }
+  }
+}
+.level-element-picture {
+  overflow: hidden;
+  border: 2px dotted #999;
+  display: block;
+}
+.codes {
+  li {
+    overflow: hidden;
+    margin-bottom: 2px;
+    font-size: 12px;
+  }
+  .letter {
+    width: 35px;
+    margin-top: 3px;
+    font-weight: bold;
+  }
+}
+.test-list {
+  margin: 10px 0;
+  padding: 10px;
+  @include border-radius(5px);
+  padding: 10px;
+  background: #333;
+  display: inline-block;
+  li {
+    margin-top: 5px;
+    &:first-child {margin-top: 0}
+  }
+  button {
+    padding: 5px 10px;
+    margin-top: 10px;
+  }
+}
+.test-content {
+  display: none;
+  max-width: 600px;
+}
+#perf-test-content {
+  font-family: helvetica, arial;
+  margin-top: 10px;
+  padding: 10px;
+  background: #333;
+  li {
+    color: #fff;
+    border-top: 1px solid #666;
+    padding: 10px;
+    cursor: pointer;
+    code {
+      display: none;
+      background: #666;
+      padding: 20px;
+      margin-top: 10px;
+    }
+    &.show-details code { display: block; }
+    &:first-child { border: 0; }
+    &.error { background: #822 }
+  }
+  h1 {
+  	color: #8699a4;
+  	background-color: #0d3349;
+  	padding: 15px;
+  }
+  .note {
+    color: #dde;
+    padding: 10px 0 0 15px;
+    font-size: 10px;
+    font-weight: bold;
+  }
+  .error-label {
+    font-weight: bold;
+    padding-bottom: 5px;
+    border-bottom: 1px solid #aaa;
+    margin-bottom: 5px;
+    display: block;
+  }
+}
+.world-canvas canvas, .canvas-container #canvas {
+  position: relative;
+  width: 100%;
+}
+.world-canvas {
+  margin: 10px 20px;
+  .canvas-container {
+    position: relative;
+    display: inline-block;
+    clear: both;
+    background-color: #888;
+  }
+  .canvas {
+    position: absolute;
+    top: 0;
+    left: 0;
+  }
+  .checkpoint-details {
+    padding: 10px;
+    background: #333;
+    border-radius: 5px;
+    display: none;
+    margin: 20px;
+    li {
+      overflow: hidden;
+      margin-top: 5px;
+    }
+    label {
+      width: 75px;
+      float: left;
+      text-align: right;
+      margin-right: 10px;
+    }
+    input[type=text] {
+      width: 100px;
+      float: left;
+    }
+    button {
+      display: block;
+      float: left;
+      width: 90px;
+      margin: 5px auto;
+    }
+  }
+}
+.css_sprite-title_small, .css_sprite-title_small_beta {
+  display: block;
+  float: left;
+}
+
+.bar-diag {
+  width: 100%;
+  height: 200px;
+  overflow: hidden;
+  margin: 20px 0;
+  li {
+    @include box-sizing(border-box);
+    background-color: #aad;
+    float: left;
+    position: relative;
+    @include background-image(linear-gradient(left, #bbd, #aad 20%, #aad 80%, #bbd 100%));
+    p {
+      position: absolute;
+      padding: 5px 0;
+      color: #000;
+      font-weight: bold;
+      bottom: 0;
+      left: 0;
+      right: 0;
+      text-align: center;
+      text-shadow: 0 0 2px #fff;
+    }
+  }
+}
+.table {
+  overflow: hidden;
+  margin: 20px 0;
+  li {
+    float: left;
+    margin: 3px 0;
+    @include background-image(linear-gradient(left, #bbd, #aad 20%, #aad 80%, #bbd 100%));
+    .value { font-weight: bold; }
+    div {
+      color: #000;
+      text-align: center;
+      padding: 5px 0;
+      margin: 0;
+      width: 40px;
+    }
+ }
+}

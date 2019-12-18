@@ -1,0 +1,20 @@
+<% if @user and @user.errors.any? %>
+<div class="error">
+  <ul>
+  <% @user.errors.full_messages.each do |msg| %>
+    <%= msg %>
+  <% end %>
+  </ul>
+</div>
+<% end %>
+<%= form_tag sessions_path, :class => "login-form" do %>
+  <div class="field">
+    <%= label_tag :email %>
+    <input id="email" name="email" type="email" required>
+  </div>
+  <div class="field">
+    <%= label_tag :password, "Beta password" %>
+    <input id="password" name="password" type="password" required>
+  </div>
+  <%= submit_tag "Log in", :class => "button" %>
+<% end %>

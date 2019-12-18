@@ -1,0 +1,28 @@
+<h1><%= @world.name %> World Stats</h1>
+<h2>Last Level Reached</h2>
+<ul class="bar-diag">
+  <% @last_reached_count.each_with_index do |count, i| %>
+    <li style = "height: <%= 200 * count / @max_count %>px; width: <%= 100 / @level_count %>%; margin-top: <%= 200 * (1 - count / @max_count) %>px; "><p><%= i + 1 %></p></li>
+  <% end %>
+</ul>
+<h2>Success/Fail Ratio</h2>
+<ul class="bar-diag">
+  <% @success_percents.each_with_index do |success_percent, i| %>
+    <li style = "height: <%= 2 * success_percent %>px; width: <%= 100 / @level_count %>%; margin-top: <%= 200 - 2 * success_percent %>px; "><p><%= i + 1 %></p></li>
+  <% end %>
+</ul>
+<h2>Average Times</h2>
+<ul class="table">
+  <% @average_times.each_with_index do |avg_time, i| %>
+    <li>
+      <div class="label"><%= i + 1 %></div>
+      <div class="value"><%= avg_time %>s</div>
+    </li>
+  <% end %>
+</ul>
+<h2>Average Star Counts</h2>
+<ul class="bar-diag">
+  <% @average_star_counts.each_with_index do |avg_star, i| %>
+    <li style = "height: <%= 66.66 * avg_star %>px; width: <%= 100 / @level_count %>%; margin-top: <%= 200 - 66.66 * avg_star %>px; "><p><%= i + 1 %></p></li>
+  <% end %>
+</ul>

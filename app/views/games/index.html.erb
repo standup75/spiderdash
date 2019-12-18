@@ -1,0 +1,13 @@
+<% if !@games.empty? %>
+  <ul class="item-list">
+  <% @games.each do |game| %>
+    <li><%= link_to game.name, game %></li>
+  <% end %>
+  </ul>
+<% else %>
+  <div> no games available.</div>
+<% end %>
+
+<% if current_user and current_user.is_admin? %>
+  <%= link_to "create a new game >>", new_game_path, :class => "create-link action-link" %>
+<% end %>

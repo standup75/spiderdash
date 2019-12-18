@@ -1,0 +1,171 @@
+Where are we at?
+----------------
+
+DONE:
+- PoolFactory (http://buildnewgames.com/)
+- performance tests
+- avoid canvas context change
+- avoid vector graphics
+from http://www.html5rocks.com/en/tutorials/canvas/performance/
+- check and remove floating point coordinates
+- clear canvas at every refresh (context.clearRect(0, 0, width, height)), put a layer for fg, bg drawn only when resolvepath is done
+- Ennemy: play with color on the frames, red goes faster, K2000 effect
+- CMS
+- put the sprite in the poolFactory (because I never really destroy them)
+- world are path with levels as checkpoints (ala Mario)
+- levels have stars (3 stars === max bonus), the spider needs to touch the star to collect it, putting the star in the web destroys it (and save this in gameProgress.stars)
+- Save progression in local storage
+- that game should not start until all the images are loaded, add a loader
+- End of level bonus
+- tutorial abstract class
+- Sync profile
+- highscore save in gameProgress (and restoreGameProgress)
+- Quit game (esc key and add button next to pause)
+- pause button disappear when it can impede spider's movement
+- Go to next world
+- Nice free fonts
+- Compare different solution to port it to Android (directCanvas, canvas, libGdx)
+- Android try run
+- no more DOM, everything in canvases
+- make bonuses bounce
+- New ennemies: electric line, roach, chameleon
+- Add vintage video game references:
+  - replace punch by pacman pills (pill.png created)
+- Life/Level not global, retry button instead of gameover
+- Bonus level unlocking mechanism: If N is the number of available stars, when the player has N-9 stars, the bonus level is unlocked. By N-15, a first hint is displayed on the level, by N-12, a second hint.... There could be several ways to then access the bonus level, depending on the hint: "Go/back/to/level/1", here are 5 hints, then on level one a door is available where the spider can go to access the bonus level. Other hints "kill/him/on/level/1", "close/50%/on/level/3", "kill/them/with/one/pill/on/level/4", "don't/kill/roach/on/level/5"... Bonus level are centipede with pacman bonuses
+- centipede bonus level with pacman bonuses (cherry, strawberry, pumpkin, pretzel, apple, pear, banana...)
+- The main map contains all the worlds, every 5 levels, unlocks a world (4 worlds of 15 levels + 1 bonus stage: 4*15+20+5 = 85 levels). Changes the checkpoint object: need to have params: type (stage|world gate|bonus stage), level_id, index, world_id
+- The smallest surface should be determined by linking the first and last point from the drawing path
+- 3 2 1 go pause when you lose a life
+- Level reordering tool: backend /levels should provide a way to reorder the levels
+- World unlocking mecanism:
+  - There is a minimum number of stars the player needs to collect before unlocking a world
+  - Clicking on a locked world display the amount of stars needed
+- Accessibility for no mouse/trackpad: keyboard only should work
+- Redo text arrow (pointer)
+- revisit tutorial, redesign arrows
+- Relocate sprite circles
+- add red stars that cannot be destroyed
+- create special stars and sequence for level that waits until each star get caught and then ends the level
+- add a level with tutorial on how to catch a star
+- Ice
+- Wait for key up after key down to reactivate key down
+- fly smell you
+- Fire
+- level speed setting
+- Save checkpoints: every 3 level put a flag between the level and the next one. Flag becomes red, game is saved.
+- Check we cannot resave a game by redoing the level that leads to a flag (the number of stars for this level must be null in the localStorage in order to save)
+- Game over. timer + skip button => home
+- hide worlds until you reach it. Put bubbles and then the world appears when bubbles pop
+- bugs with ladybug inside the path still occurs, need a waterproof solution
+- add tutorial sequence "Get a green mustache!"
+- Sequences have skip events and can run asynchronously
+- Switch to a more puzzle mode: No more lives, Save at each level
+- World Map: Click during sequence should work
+- Crouching: When hitting the direction of the wall, the spider does not move.
+- Deadly Zone
+- Massacre: all monster killed bonus
+- leaves should not kill through walls
+- check the number of stars before unlocking a mustache
+- Repair Secret Level in the Woods
+- Mustaches added dynamically on offscreen canvas
+- finish the yeah animation
+- Crouching as a switch: create crouching animation
+- Can't change wall if there is no space, should be able to connect
+- Fine tune ladybug's getRect
+- Spider rotates on edges
+- Create ladybug nest
+- Sprites on path: solve the thin wall collision issue while monster is turning
+- Ladybugs come on the wrong side if closing the path on them
+- Textures in walls.png
+- Crack as roach nest
+- Better direction responses in tight curves
+- make it obvious where to click when displaying the world map
+
+- 600x1.08 X 950x1.08 -> 720 x 1026
+- tiles: 25 x 25 -> 27 x 27
+- update tilecountx and tilecounty
+- update levels with 2 more y tiles
+
+Todo:
+- Islands
+- More puzzle monsters:
+  - Snails leave a poisonous trail
+  - Water
+  - Rainbows: killing a rainbow kills the spider
+- LevelBonus closer to a real pacman/snake mashup
+- monster/level/world design (see below)
+- you won! And what?
+- Record stats to gauge levels difficulty
+- Click on highscore to get global ranking, global best score, next best score
+- Loading screen like the looney tunes that's all folks, at the end the spider comes in the middle
+- Centipede get stuck on a closing path
+- sounds (http://www.schillmania.com/projects/soundmanager2/)
+- internationalization
+- test on FF and safari
+- share options
+- favicon
+- social: +1, fb, tw
+- playtomic.com: Analytics
+- how to package the game for tablet?
+  - apple icon from <link rel..> in the header
+- buy domain/deploy
+- password leave empty if forgotten: SMTP settings
+- analytics
+- unit tests
+
+LEVEL DESIGN IDEAS
+
+- A world map could be:
+  - a big animal skelton
+  - broken windows of a mansion
+- Add vintage video game references:
+  - add a space invader in a background
+  - bomberman bombs
+  - tetris level where the wall look like the tetris tiles
+  - something from the first luigi and mario??
+  - super mario tube with plants
+- bonus stages:
+  - Original (like Qyx)
+
+MONSTERS/WORLDS
+
+World: Forest
+* Centipede
+* Fly
+* branches and leaves
+* Ladybug (on the path)
+* chameleon
+
+World: Water
+- Fish
+- Frog
+- Crab
+- Crustacean (on the path)
+
+World: Mountains
+- ice surfaces that silk can't grip
+- Snow covers the bottom slowly and the spider cannot go there anymore
+* butterfly
+- Ladybug that can fly (on the path)
+
+World: Cave
+- water pounds
+- water drops
+* dragonfly
+* Roach (on the path)
+
+World: Space
+* Waves (ennemy)
+- Alien
+* electricity
+- Asteroids
+- Robot (on the path)
+
+2/ Bonuses
+
+* speed
+* life
+* pill
+* trap
+

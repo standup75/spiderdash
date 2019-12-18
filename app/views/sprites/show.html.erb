@@ -1,0 +1,26 @@
+<div class="field">
+  <%= label_tag :name %>
+  <div class="value"><%= @sprite.name %></div>
+</div>
+<div class="field">
+  <%= label_tag :family %>
+  <div class="value"><%= @sprite.family %></div>
+</div>
+<div class="field">
+  <%= label_tag :set %>
+  <div class="value"><%= @sprite.set %></div>
+</div>
+<% if not @sprite.options.blank? %>
+<div class="field">
+  <%= label_tag :options %>
+  <% @sprite.options.each do |option| %>
+    <% unless option.level_id %>
+      <div class="value"><%= option.label %> : <%= option.content %></div>
+    <% end %>
+  <% end %>
+</div>
+<% end %>
+<%= link_to "delete this sprite >>", sprite_path, :method => :delete, :class => "margin-top action-link", :confirm => "Are you sure you want to delete this sprite?" %>
+<%= link_to "edit this sprite >>", edit_sprite_path, :class => "margin-top-small action-link" %>
+<%= link_to "duplicate this sprite >>", duplicate_sprite_path, :class => "margin-top-small action-link" %>
+<%= link_to "back >>", sprites_path, :class => "margin-top-small action-link" %>

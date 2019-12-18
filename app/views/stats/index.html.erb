@@ -1,0 +1,9 @@
+<% if !@worlds.empty? %>
+  <ul class="item-list">
+  <% @worlds.each do |world| %>
+    <li><%= link_to world.name, stats_world_path(world) %></li>
+  <% end %>
+  </ul>
+<% else %>
+  <div> no world available.</div>
+<% end %>

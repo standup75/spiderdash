@@ -1,0 +1,75 @@
+<div class="field">
+  <%= label_tag :name %>
+  <div class="value"><%= @world.name %></div>
+</div>
+<div class="field">
+  <%= label_tag :world_index %>
+  <div class="value"><%= @world.world_index %><%= @world.world_index == 0 ? " (main world)" : "" %></div>
+</div>
+<div class="field">
+  <%= label_tag :game %>
+  <div class="value">
+    <% if @world.game %>
+    <%= @world.game.name %>
+    <% else %>
+    No game associated
+    <% end %>
+  </div>
+</div>
+<div class="field">
+  <label>Color</label>
+  <div class="value">
+    <%= @world.background_color %>
+  </div>
+</div>
+<div class="field">
+  <label># checkpoints</label>
+  <div class="value">
+    <%= @world.checkpoints.size-2 %>
+  </div>
+</div>
+<div class="field">
+  <label># levels</label>
+  <div class="value">
+    <%= @world.levels.size %>
+  </div>
+</div>
+<div class="field">
+  <label>Hint (semi-colon separated)</label>
+  <div class="value">
+    <%= @world.hint %>
+  </div>
+</div>
+<div class="field">
+  <label>Missing assignments</label>
+  <div class="value <%= @missingAssignments.empty? ? 'green' : 'red' %>">
+    <%= @missingAssignments %>
+  </div>
+</div>
+<div class="field">
+  <%= label_tag :game %>
+  <div class="value">
+    <% if @world.game %>
+    <%= @world.game.name %>
+    <% else %>
+    No game associated
+    <% end %>
+  </div>
+</div>
+<% if @world.levels %>
+<div class="field">
+  <%= label_tag :levels %>
+  <div class="value">
+    <ul>
+      <% @world.levels.each do |level| %>
+        <li><%= link_to level.name, level %></li>
+      <% end %>
+    </ul>
+  </div>
+</div>
+<% end %>
+<%= link_to "delete this world >>", world_path, :method => :delete, :class => "margin-top action-link", :confirm => "Are you sure you want to delete this world?" %>
+<%= link_to "deep delete this world >>", world_path(:deep => true), :method => :delete, :class => "margin-top-small action-link", :confirm => "Are you sure you want to delete this world and all its children?" %>
+<%= link_to "edit this world >>", edit_world_path, :class => "margin-top-small action-link" %>
+<%= link_to "duplicate this world >>", duplicate_world_path, :class => "margin-top-small action-link" %>
+<%= link_to "back >>", worlds_path, :class => "margin-top-small action-link" %>

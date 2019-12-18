@@ -1,0 +1,27 @@
+== Welcome to Spiderdash!
+
+The game has 2 parts
+
+1. spiderdash.net: deployed on amazon S3 (TODO: cloudFront distribution) Static version of the website, all api calls are done via CORS
+
+2. api.spiderdash.net: deployed on spiderdash.heroku.com, basically only used for api calls (sync and analytics)
+
+The 3rd part is the editor which is local
+
+S3 buckets: spiderdash.net, www.spiderdash.net
+Domain hosted on hostmonster.com
+DNS web service: Amazon route 53
+
+== How to deploy
+
+1. Make sure you are in the project directory
+
+2. Precompile assets and deploy on to S3
+
+  rake static:sync
+
+3. Deploy to heroku (only required if api changes have been made)
+  
+  git add .
+  git commit -am "my api changes..."
+  git push heroku master

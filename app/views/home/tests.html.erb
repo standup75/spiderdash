@@ -1,0 +1,28 @@
+<div class="container">
+  <div class="left">
+    <h2>Unit tests</h2>
+    <div id="select-all-units"><input type="checkbox" />Select all</div>
+    <div id="unit-tests" class="test-list">
+      <ul></ul>
+      <button id="execute-unit-tests">Execute</button>
+    </div>
+    <h2>Performance tests</h2>
+    <div id="select-all-perfs"><input type="checkbox" />Select all</div>
+    <div id="perf-tests" class="test-list">
+      <ul></ul>
+      <button id="execute-perf-tests">Execute</button>
+    </div>
+  </div>
+  <div id="unit-test-content" class="left margin-left test-content">
+  	<h2 id="qunit-banner"></h2>
+  	<div id="qunit-testrunner-toolbar"></div>
+  	<h2 id="qunit-userAgent"></h2>
+  	<ol id="qunit-tests"></ol>
+  </div>
+  <div id="perf-test-content" class="left margin-left test-content">
+  </div>
+</div>
+
+<div id="main">
+<%= render "game" %>
+</div>

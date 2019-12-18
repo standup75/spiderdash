@@ -1,0 +1,10 @@
+<div class="option">
+  <select class="sprite" name="sprite_<%= i %>">
+    <% @sprites.each do |sprite| %>
+    <option value="<%= sprite.id %>" <% if sprite.id == option.sprite_id %>selected="selected"<% end %>><%= sprite.name %></option>
+    <% end %>
+  </select>
+  <input class="label" type="text" name="label_<%= i %>" value="<%= option.label %>"/>
+  <input class="content" type="text" name="content_<%= i %>" value="<%= option.content %>"/>
+  <div class="delete">x</div>
+</div>
